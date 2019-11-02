@@ -4,23 +4,39 @@ var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb://localhost/ManualAuth', { useMongoClient: true });
+mongoose.connect('mongodb://localhost:8000', { useMongoClient: true }, (err, next) => 
+{
+  if(err)
+  {
+    console.log(err.stack);
+  }
+  else
+  {
+    console.log('connected to database');
+  }
+});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
 });
 
+app.use(cookieParser());
+
+
 app.use(session({
   secret: 'work hard',
   resave: true,
   saveUninitialized: false,
-  store: new MongoStore({
-    mongooseConnection: db
-  })
+  // store: new MongoStore({
+  //   mongooseConnection: db
+  // })
+
+  cookie:{maxAge:600000}
 }));
 
 app.set('views', path.join(__dirname, 'views'));

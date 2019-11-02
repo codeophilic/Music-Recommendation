@@ -9,6 +9,7 @@ userSchema = new Schema( {
 	password: String,
 	passwordConf: String,
 	music_list: [Number]
+	
 }),
 User = mongoose.model('User', userSchema);
 

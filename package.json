@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "connect-mongo": "^3.0.0",
+    "cookie-parser": "^1.4.4",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
@@ -16,7 +17,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
- 
   "author": "foram sojitra",
   "license": "ISC",
   "bugs": {

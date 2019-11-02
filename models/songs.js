@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-userSchema = new Schema( {
+songSchema = new Schema( {
 	
 	song_id: Number,
-	song_name: String,
+    song_name: String,
+    likes: Number
 }),
 song = mongoose.model('song', songSchema);
 
